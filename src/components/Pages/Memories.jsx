@@ -8,6 +8,12 @@ function MemoryPage() {
   const [description, setDescription] = useState('');
   const [photo, setPhoto] = useState("");
 
+
+
+  const handleChildChange = (childName) => {
+    setSelectedChild(childName);
+  };
+
   const handlePhotoChange = (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -30,7 +36,7 @@ function MemoryPage() {
 
   const addMemory = (e) => {
     e.preventDefault();
-    if (!title.trim() || !date || !description.trim()) {
+    if (!title || !date || !description) {
       alert('Please fill all required fields!');
       return;
     }
@@ -40,7 +46,7 @@ function MemoryPage() {
       title: title.trim(),
       date,
       description: description.trim(),
-      photo: photo // Saved the image into the memory object
+      photo: photo 
     };
 
     setMemories((prevMemories) => ({
@@ -68,27 +74,34 @@ function MemoryPage() {
   return (
     <div >
       <h1>Memories</h1>
+
+      <label>Select:</label>
+
+        <button
+          className={selectedChild === 'Duggu' ? 'active' : ''}
+          onClick={() => handleChildChange('Duggu')} >
+          Duggu
+        </button>
+       
+        <button
+          className={selectedChild === 'Mikku' ? 'active' : ''}
+          onClick={() => handleChildChange('Mikku')}>
+          Mikku
+        </button>
+        <br/><br/>
+     
   
       <form onSubmit={addMemory} >
         
-        <div className='memory-form'>
-         
-          <label >Select Child:</label>
-          <select value={selectedChild} onChange={(e) => setSelectedChild(e.target.value)}>
-            
-            <option value="">----</option>
-            <option value="Duggu">Duggu</option>
-            <option value="Mikku">Mikku</option>
-          
-          </select>
-        </div>
-
+       <div className="memories-form">
         <div>
          
           <label>Title:</label>
           <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
         
         </div>
+
+        <br/><br/>
 
         <div>
          
@@ -97,12 +110,16 @@ function MemoryPage() {
         
         </div>
 
+        <br/><br/>
+
         <div>
          
           <label>Description:</label>
           <textarea value={description} onChange={(e) => setDescription(e.target.value)} rows="4"/>
         
         </div>
+
+        <br/><br/>
 
         <div>
           
@@ -118,12 +135,15 @@ function MemoryPage() {
        
         </div>
 
-        <button type="submit">Save Memory</button>
+        <br/><br/>
+
+        <button type="submit" >Save Memory</button>
       
-      
+      </div>
+
       </form>
 
-      
+      <br/><br/>
 
       <h2>Memories of {selectedChild}</h2>
       
