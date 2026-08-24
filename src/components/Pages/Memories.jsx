@@ -1,41 +1,53 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router';
+import { Link, useLocation } from 'react-router';
 
 function MemoryPage() {
-  const [selectedChild, setSelectedChild] = useState('');
+
+  const location = useLocation();
+  const initialChild = location.state?.childName || 'Duggu';
+
+  const [selectedChild, setSelectedChild] = useState(initialChild);
   const [title, setTitle] = useState('');
   const [date, setDate] = useState('');
   const [description, setDescription] = useState('');
   const [photo, setPhoto] = useState("");
 
 
-
+  
   const handleChildChange = (childName) => {
     setSelectedChild(childName);
   };
 
+
+  
   const handlePhotoChange = (e) => {
     const file = e.target.files[0];
     if (!file) return;
 
     const reader = new FileReader();
     reader.onload = () => {
-      setPhoto(reader.result); 
+      setPhoto(reader.result);
     };
     reader.readAsDataURL(file);
   };
 
+  
   const [memories, setMemories] = useState(() => {
     const saved = localStorage.getItem('childrenMemories');
     return saved ? JSON.parse(saved) : { Duggu: [], Mikku: [] };
   });
 
+  
   useEffect(() => {
     localStorage.setItem('childrenMemories', JSON.stringify(memories));
   }, [memories]);
 
   const addMemory = (e) => {
     e.preventDefault();
+    if (!selectedChild) {
+      alert('Please select a child first!');
+      return;
+    }
     if (!title || !date || !description) {
       alert('Please fill all required fields!');
       return;
@@ -46,36 +58,38 @@ function MemoryPage() {
       title: title.trim(),
       date,
       description: description.trim(),
-      photo: photo 
+      photo: photo
     };
 
-    setMemories((prevMemories) => ({
-      ...prevMemories,
-      [selectedChild]: [newMemory, ...(prevMemories[selectedChild] || [])],
+    setMemories((prevMemory) => ({
+      ...prevMemory,
+      [selectedChild]: [newMemory, ...(prevMemory[selectedChild] || [])],
     }));
 
-    
     setTitle('');
     setDate('');
     setDescription('');
     setPhoto('');
-    e.target.reset(); 
+    e.target.reset();
   };
 
   const deleteMemory = (id) => {
-    setMemories((prevMemories) => ({
-      ...prevMemories,
-      [selectedChild]: (prevMemories[selectedChild] || []).filter(
+    setMemories((prevMemory) => ({
+      ...prevMemory,
+      [selectedChild]: (prevMemory[selectedChild] || []).filter(
         (memory) => memory.id !== id
       ),
     }));
   };
 
   return (
-    <div >
-      <h1>Memories</h1>
 
-      <label>Select:</label>
+     <div className='memories-data'>
+
+      
+      <h1>Memories</h1>
+        
+        <label>Select:</label>
 
         <button
           className={selectedChild === 'Duggu' ? 'active' : ''}
@@ -90,11 +104,11 @@ function MemoryPage() {
         </button>
         <br/><br/>
      
-  
+     
       <form onSubmit={addMemory} >
-        
-       <div className="memories-form">
-        <div>
+        <div className="memories-form">
+
+           <div>
          
           <label>Title:</label>
           <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
@@ -115,7 +129,7 @@ function MemoryPage() {
         <div>
          
           <label>Description:</label>
-          <textarea value={description} onChange={(e) => setDescription(e.target.value)} rows="4"/>
+          <textarea value={description} onChange={(e) => setDescription(e.target.value)} rows="4" maxLength="200"/>
         
         </div>
 
@@ -129,7 +143,7 @@ function MemoryPage() {
           {photo && (
             <div>
               <p>Preview:</p>
-              <img src={photo} alt="Preview" style={{ maxWidth: '100px', maxHeight: '100px', borderRadius: '4px' }} />
+              <img src={photo} alt="Preview" style={{ maxWidth: '100px', maxHeight: '100px'}} />
             </div>
           )}
        
@@ -140,27 +154,34 @@ function MemoryPage() {
         <button type="submit" >Save Memory</button>
       
       </div>
-
+      
       </form>
-
+      
       <br/><br/>
 
-      <h2>Memories of {selectedChild}</h2>
+      
+
+      <h2>Memories of {selectedChild}.</h2>
       
       {(!memories[selectedChild] || memories[selectedChild].length === 0) ? (
-        <p>No memories yet for {selectedChild}.</p>
+        <p>No memories of {selectedChild} to Display.</p>
       ) : (
        
-       <div >
+       <div className='memories-card'>
           
           {memories[selectedChild].map((memory) => (
             <div key={memory.id} >
-              <h3>{memory.title}</h3>
-              <small >{memory.date}</small>
-              <p>{memory.description}</p>
+
               {memory.photo && (
-                <img src={memory.photo} alt={memory.title} style={{ maxWidth: '200px', maxHeight: '200px' }}/>
+                <img src={memory.photo} alt={memory.title} style={{ maxWidth: '300px', maxHeight: '300px' }}/>
               )}
+              
+              <br/><br/>
+              <h3>{memory.title}</h3><br/><br/>
+              <h4 >{memory.date}</h4><br/><br/>
+              <p>{memory.description}</p><br/><br/>
+              
+             
               <Link to="/memories">
               <button onClick={() => deleteMemory(memory.id)}>Delete Memory</button>
               </Link>
@@ -174,7 +195,9 @@ function MemoryPage() {
     
     </div>
   
+
   );
-}
+
+};
 
 export default MemoryPage;
