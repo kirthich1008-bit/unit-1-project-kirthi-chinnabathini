@@ -1,74 +1,79 @@
-import { useState } from 'react';
-import { Link } from 'react-router';
+import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router';
 
-function MilestonesPage() {
-  const [selectedChild, setSelectedChild] = useState('');
+function MilestonePage() {
+  
+  const location = useLocation();
+  const initialChild = location.state?.childName || 'Duggu';
+
+  const [selectedChild, setSelectedChild] = useState(initialChild);
   const [title, setTitle] = useState('');
   const [date, setDate] = useState('');
   const [description, setDescription] = useState('');
   const [photo, setPhoto] = useState("");
 
-const [milestone, setMilestone] = useState(() => {
-    const saved = localStorage.getItem('childrenMilestones');
-    return saved ? JSON.parse(saved) : { Duggu: [], Mikku: [] };
-  });
-
 const handleChildChange = (childName) => {
     setSelectedChild(childName);
   };
 
-
-const handlePhotoChange = (e) => {
+  const handlePhotoChange = (e) => {
     const file = e.target.files[0];
     if (!file) return;
 
     const reader = new FileReader();
     reader.onload = () => {
-      setPhoto(reader.result); 
+      setPhoto(reader.result);
     };
     reader.readAsDataURL(file);
   };
 
-const addMilestone = (e) => {
+  const [milestone, setMilestone] = useState(() => {
+    const saved = localStorage.getItem('childrenMilestones');
+    return saved ? JSON.parse(saved) : { Duggu: [], Mikku: [] };
+  });
+
+  useEffect(() => {
+    localStorage.setItem('childrenMilestones', JSON.stringify(milestone));
+  }, [milestone]);
+
+  const addMilestone = (e) => {
     e.preventDefault();
+    if (!selectedChild) {
+      alert('Please select a child first!');
+      return;
+    }
     if (!title || !date || !description) {
       alert('Please fill all required fields!');
       return;
     }
 
-  
     const newMilestone = {
       id: Date.now(),
-      photo: photo,
-      title: title,
+      title: title.trim(),
       date,
-      description: description,
+      description: description.trim(),
+      photo: photo
     };
 
-    const updatedMilestones = {
-      ...milestone,
-      [selectedChild]: [newMilestone, ...(milestone[selectedChild] || [])],
-    };
+    setMilestone((prevMilestone) => ({
+      ...prevMilestone,
+      [selectedChild]: [newMilestone, ...(prevMilestone[selectedChild] || [])],
+    }));
 
-    setMilestone(updatedMilestones);
-    localStorage.setItem('childrenMilestones', JSON.stringify(updatedMilestones));
-    
-    setPhoto('');
     setTitle('');
     setDate('');
     setDescription('');
-  
-};
+    setPhoto('');
+    e.target.reset();
+  };
 
-const deleteMilestone = (id) => {
-    const updatedMilestones = {
-      ...milestone,
-      [selectedChild]: milestone[selectedChild].filter(
+  const deleteMilestone = (id) => {
+    setMilestone((prevMilestone) => ({
+      ...prevMilestone,
+      [selectedChild]: (prevMilestone[selectedChild] || []).filter(
         (milestone) => milestone.id !== id
       ),
-    };
-    setMilestone(updatedMilestones);
-    localStorage.setItem('childrenMilestones', JSON.stringify(updatedMilestones));
+    }));
   };
 
   return(
@@ -153,19 +158,23 @@ const deleteMilestone = (id) => {
       <h2>Milestones of {selectedChild}.</h2>
       
       {(!milestone[selectedChild] || milestone[selectedChild].length === 0) ? (
-        <p>No milestones of {selectedChild}.</p>
+        <p>No milestones of {selectedChild} to Display.</p>
       ) : (
        
-       <div >
+       <div className='milestone-card'>
           
           {milestone[selectedChild].map((milestone) => (
             <div key={milestone.id} >
-              <h3>{milestone.title}</h3><br/><br/>
-              <small >{milestone.date}</small><br/><br/>
-              <p>{milestone.description}</p><br/><br/>
+
               {milestone.photo && (
                 <img src={milestone.photo} alt={milestone.title} style={{ maxWidth: '300px', maxHeight: '300px' }}/>
               )}<br/><br/>
+              <h3>{milestone.title}</h3><br/><br/>
+              <h4 >{milestone.date}</h4><br/><br/>
+              <p>{milestone.description}</p><br/><br/>
+              
+             
+             
               <Link to="/milestones">
               <button onClick={() => deleteMilestone(milestone.id)}>Delete Milestone</button>
               </Link>
@@ -188,4 +197,4 @@ const deleteMilestone = (id) => {
 
 
 };
-export default MilestonesPage;
+export default MilestonePage;
