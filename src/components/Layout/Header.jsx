@@ -4,7 +4,12 @@ const Header = () => {
     return(
         <header>
             <div className="header">
-                <h1>CHILDRENS MEMORY LANE</h1>
+            
+            <img src="logo.jpeg" alt="family picture" height={100} width={100}/> 
+            <h1>SK Memories & Milestones</h1>
+           
+
+                
             </div>
             <Navigation/>
         </header>
