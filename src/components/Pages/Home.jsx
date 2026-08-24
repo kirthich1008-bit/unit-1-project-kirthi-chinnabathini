@@ -1,3 +1,4 @@
+
 const HomePage = () => {
 
     return(
@@ -5,11 +6,14 @@ const HomePage = () => {
         <div className="home">
             <h1>Welcome!</h1>
             <p>
-                ❤️👦 Every Child is Precious For Parents 👦❤️
+                ❤️👦 To the world, a child is just a person. For parents, that child is the entire world. 👦❤️
+            </p>
+            <p>
+                ❤️👦 Every "MILESTONE" is a footprint on our hearts, and every "MEMORY" is a treasure we guard forever.👦❤️
             </p>
         </div>
 
-        <img src="family.jpg" alt="family picture" height="300"/>
+        <img src="family.jpeg" alt="family picture" height={300}/>
         
         </>
     );
