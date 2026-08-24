@@ -12,9 +12,10 @@ export const profiles = [
         Hospital: "Memorial Herman",
         deliveredDoctor: "DR.Steven Strong",
         birthWeight: "7lbs",
-        firstPediatrician: "DR.Neha Manikonda",
-        secondPediatrician: "Dr.Justin hygen",
+        pediatrician: "Dr.Justin hygen",
         presentAge: "3 and a half years old",
+        homeAddress: "2345 Sawdust Road APT 2333 Woodlands-TX-22830"
+                     
     },
   
     {
@@ -28,8 +29,9 @@ export const profiles = [
         Hospital: "St Joseph's Hospital",
         deliveredDoctor: "DR.Emma Eubanks",
         birthWeight: "6lbs",
-        prediatrician: "Dr.Justin Thomas hagen",
+        pediatrician: "Dr.Justin hygen",
         presentAge: "1 and a half years old",
+        homeAddress: "436 Compassion CIR Wentzville MO-63385-2407"
     }
 
 
