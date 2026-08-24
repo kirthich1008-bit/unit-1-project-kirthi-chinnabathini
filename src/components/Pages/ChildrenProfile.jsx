@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router';
 import { profiles } from '../../MockData/profile';
-import './ChildrenProfile.css';
 
-function ProfilePage() { 
-  
-  const [profileList, setProfileList] = useState([]);
+
+function ProfilePage() {
+  const [profileList, setProfileList] = useState(profiles);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -13,28 +12,21 @@ function ProfilePage() {
       setProfileList(profiles);
       setIsLoading(false);
     };
-
     fetchProfiles();
-  }, []); 
+  }, []);
 
   if (isLoading) {
     return <div className="loading">Loading profiles...</div>;
   }
 
-  return ( 
-    <div className="profiles-container"> 
-      {profileList.map((user, index) => ( 
+  return (
+    <div className="profiles-container">
+      {profileList.map((user, index) => (
         <div key={user.id} className="profile-card">
           <div className="profile-image-wrapper">
-            {index === 0 && ( 
-              <img src="/duggu.jpeg" alt="family" height={300} /> 
-            )} 
-            {index === 1 && ( 
-              <img src="/mikku.jpeg" alt="home" height={300} /> 
-            )} 
+            {index === 0 && <img src="/duggulu.jpeg" alt="family" height={300} />}
+            {index === 1 && <img src="/mikkulu.jpeg" alt="home" height={300} />}
           </div>
-         
-
 
           <div className="profile-details">
             <p><strong>Name:</strong> {user.name}</p>
@@ -46,25 +38,29 @@ function ProfilePage() {
             <p><strong>HOSPITAL:</strong> {user.Hospital}</p>
             <p><strong>DELIVERED DOCTOR:</strong> {user.deliveredDoctor}</p>
             <p><strong>BIRTHWEIGHT:</strong> {user.birthWeight}</p>
-            <p><strong>FIRST PEDIATRICIAN:</strong> {user.firstPediatrician}</p>
-            <p><strong>SECOND PEDIATRICIAN:</strong> {user.secondPrediatrician}</p>
+            <p><strong>PEDIATRICIAN:</strong> {user.pediatrician}</p>
             <p><strong>PRESENT AGE:</strong> {user.presentAge}</p>
+            <p><strong>WELCOMED-HOME:</strong> {user.homeAddress}</p>
           </div>
-          
-          <div className="profile-actions">
-            <Link to={`/memories`}>
-              <button>New Memories</button>
+
+          <div className="profile-buttons">
+            
+            <Link to="/memories" state={{ childName: user.nickName }}>
+              <button>Memories</button>
             </Link>
-            <Link to={`/milestones`}>
+            <Link to="/milestones" state={{ childName: user.nickName }}>
               <button>Milestones</button>
             </Link>
-            <Link to={`/gallery`}>
+            <Link to="/gallery" state={{ childName: user.nickName }}>
               <button>Gallery</button>
-            </Link>
-
+             </Link>
+    
           </div>
+          
         </div>
-      ))} 
+      ))}
+     
+      
     </div>
   );
 }
