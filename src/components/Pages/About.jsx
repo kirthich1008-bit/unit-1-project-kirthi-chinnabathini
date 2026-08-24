@@ -1,9 +1,17 @@
+
 const AboutPage =() => {
 
     return(
         <>
         <div className="about">
             <h1> About US </h1>
+            
+            <br></br>
+            
+            <img src="/about.jpeg" alt="family picture" height="300"/>
+            
+            <br></br>
+           
             <p>
                 Kirthi and her husband have two boys, making them a family of four. 
                 Kirthi has always wanted to store the core memories of her sons, a passion 
@@ -28,7 +36,7 @@ const AboutPage =() => {
                 as their umbilical cords, hospital bands, and visitor tags—to gift to their sons on their 21st birthday.
             </p>
 
-            <img src="public/home.jpeg" alt="family picture" height="300"/>
+            
         
         </div>
         </>
