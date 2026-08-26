@@ -1,0 +1,23 @@
+
+
+nav {
+  background: #080808;
+  
+}
+
+.navigation {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  list-style: none;
+}
+
+.navigation a {
+  color: #ecf0f1;
+  text-decoration: none;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.navigation a:hover {
+  color: #f6f1f1;
+}
