@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router';
+import './Pages.css';
 
 function MilestonePage() {
   
@@ -100,7 +101,7 @@ const handleChildChange = (childName) => {
      
      
       <form onSubmit={addMilestone} >
-        <div className="milestione-form">
+        <div className="milestone-form">
 
            <div>
          
