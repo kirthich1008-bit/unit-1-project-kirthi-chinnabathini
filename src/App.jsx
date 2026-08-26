@@ -8,7 +8,7 @@ import MemoryPage from './components/Pages/Memories';
 import MilestonePage from './components/Pages/Milestones';
 import GalleryPage from './components/Pages/Gallery';
 import Footer from './components/Layout/Footer';
-import './app.css';
+import './App.css';
 
 const App = () => {
    
