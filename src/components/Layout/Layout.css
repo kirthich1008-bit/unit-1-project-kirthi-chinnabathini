@@ -1,0 +1,197 @@
+/* HEADER */
+
+/* .header {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 5px;
+
+}
+
+.header img {
+    border-radius: 50%;
+    object-fit: cover; 
+    flex-shrink: 0;   
+}
+
+.header h1 {
+    
+    flex-grow: 1;
+    text-align: center;
+    margin: 0;
+    color: black;
+} */
+
+
+/* NAVIGATION */
+
+/* nav {
+  background: #080808;
+  
+}
+
+.navigation {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  list-style: none;
+}
+
+.navigation a {
+  color: #ecf0f1;
+  text-decoration: none;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.navigation a:hover {
+  color: #f6f1f1;
+} */
+
+
+/* FOOTER */
+
+/* footer {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  padding: 5px 0;
+  width: 100%;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 5px;
+  text-align: center;
+  font-size: 14px;
+  letter-spacing: 1.0px;
+} */
+
+
+
+/* HEADER */
+.header {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 5px;
+}
+.header img {
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    width: 50px; /* Base size for mobile */
+    height: 50px;
+}
+.header h1 {
+    flex-grow: 1;
+    text-align: center;
+    margin: 0;
+    color: black;
+    font-size: 1.5rem; /* Adjusted for smaller screens */
+}
+
+/* NAVIGATION */
+nav {
+    background: #080808;
+    padding: 10px 0;
+}
+.navigation {
+    display: flex;
+    justify-content: center;
+    gap: 1rem; /* Reduced gap for small screens */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap; /* Allows items to wrap if screen is too narrow */
+}
+.navigation a {
+    color: #ecf0f1;
+    text-decoration: none;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 14px;
+}
+.navigation a:hover {
+    color: #f6f1f1;
+}
+
+/* FOOTER */
+footer {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    padding: 15px 0;
+    width: 100%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    text-align: center;
+    font-size: 12px; /* Slightly smaller for mobile readability */
+    letter-spacing: 1.0px;
+}
+
+
+/* ==========================================================================
+   IPHONE / MOBILE MEDIA QUERY (Screens up to 430px - targets iPhone 14/15/16 Pro Max)
+   ========================================================================== */
+@media screen and (max-width: 430px) {
+    .header {
+        flex-direction: column; /* Stacks image and logo title vertically */
+        gap: 8px;
+        padding: 10px 5px;
+    }
+    
+    .header h1 {
+        font-size: 1.3rem; /* Prevents long titles from overflowing */
+    }
+
+    .navigation {
+        flex-direction: column; /* Changes links from row to a vertical list stack */
+        align-items: center;
+        gap: 0.8rem;
+    }
+    
+    .footer-container {
+        font-size: 11px;
+        line-height: 1.4;
+    }
+}
+
+
+/* ==========================================================================
+   LAPTOP / DESKTOP MEDIA QUERY (Screens 1024px and up)
+   ========================================================================== */
+@media screen and (min-width: 1024px) {
+    .header {
+        padding: 15px 40px; /* Generous breathing room for wide screens */
+    }
+
+    .header img {
+        width: 70px; /* Larger branding profile photo for laptop layouts */
+        height: 70px;
+    }
+
+    .header h1 {
+        font-size: 2.2rem;
+    }
+
+    .navigation {
+        gap: 3rem; /* Expands spacing between navbar choices */
+    }
+
+    .navigation a {
+        font-size: 16px; /* Larger crisp typography for desktop viewing */
+    }
+
+    footer {
+        padding: 25px 0;
+    }
+
+    .footer-container {
+        font-size: 14px;
+    }
+}

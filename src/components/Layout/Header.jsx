@@ -1,3 +1,4 @@
+import './Layout.css';
 import Navigation from "./Navigation";
 
 const Header = () => {

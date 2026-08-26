@@ -1,8 +1,9 @@
-
+import './Pages.css';
 const HomePage = () => {
 
     return(
         <> 
+        
         <div className="home">
             <h1>Welcome!</h1>
             <p>
@@ -20,3 +21,4 @@ const HomePage = () => {
 };
 
 export default HomePage;
+

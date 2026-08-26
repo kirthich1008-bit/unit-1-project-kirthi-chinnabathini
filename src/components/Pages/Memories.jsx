@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router';
+import './Pages.css';
 
 function MemoryPage() {
 
@@ -104,6 +105,7 @@ function MemoryPage() {
         </button>
         <br/><br/>
      
+      
      
       <form onSubmit={addMemory} >
         <div className="memories-form">
@@ -160,7 +162,7 @@ function MemoryPage() {
       <br/><br/>
 
       
-
+     
       <h2>Memories of {selectedChild}.</h2>
       
       {(!memories[selectedChild] || memories[selectedChild].length === 0) ? (
@@ -192,6 +194,7 @@ function MemoryPage() {
         </div>
       
       )}
+    
     
     </div>
   

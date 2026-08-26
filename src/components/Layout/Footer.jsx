@@ -1,12 +1,14 @@
+import './Layout.css';
+
 const Footer = () => {
     
     
     return(
-        <header>
-            <div className="footer">
+        <footer>
+            <div className="footer-container">
                 &copy; KirthiSagar! All Rights Reserved.
             </div>
-        </header>
+        </footer>
     );
 };
 
