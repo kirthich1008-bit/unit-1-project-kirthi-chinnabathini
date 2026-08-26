@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useLocation } from 'react-router';
-
+import './Pages.css';
 
 function GalleryPage({data}) {
   
@@ -19,6 +19,11 @@ function GalleryPage({data}) {
     return child && type;
   });
 
+  const Children =['All', 'Duggu', 'Mikku'];
+  const DataType =['All', 'Milestone', 'Memories'];
+
+
+
   return (
     <div className="gallery-container">
       <h1>Children Gallery</h1>
@@ -26,9 +31,17 @@ function GalleryPage({data}) {
        {/* Child selection  */}
       <div>
         <span>Child: </span>
-        {['All', 'Duggu', 'Mikku'].map((child) => (
+        {Children.map((child) => (
          
-         <button key={child} onClick={() => setSelectedChild(child)} >
+         <button key={child} onClick={() => setSelectedChild(child)} style={{
+                     marginRight: '8px',
+                     padding: '6px 12px',
+                     backgroundColor: selectedChild === child ? '#0f0e0e' : '#f0f0f0',
+                     color: selectedChild === child ? '#fff' : '#000',
+                     border: '1px solid #ccc',
+                     borderRadius: '4px',
+                     cursor: 'pointer',
+                  }} >
             {child}
           </button>
         
@@ -38,11 +51,19 @@ function GalleryPage({data}) {
       {/* Type Selection */}
       <div>
         <span>Type: </span>
-        {['All', 'Milestone', 'Memory'].map((type) => (
+        {DataType.map((type) => (
           
-          <button key={type} onClick={() => setFilterType(type)} >
-            {type === 'All' ? 'All Types' : type}
-          </button>
+          <button key={`type-btn-${type}`} onClick={() => setFilterType(type)} style={{
+                        marginRight: '8px',
+                        padding: '6px 12px',
+                        backgroundColor: filterType === type ? '#0f0e0e' : '#f0f0f0',
+                        color: filterType === type ? '#fff' : '#000',
+                        border: '1px solid #ccc',
+                        borderRadius: '4px',
+                        cursor: 'pointer',
+                     }} >
+         {type === 'All' ? 'All Types' : type }
+        </button>
         
         ))}
       </div>
