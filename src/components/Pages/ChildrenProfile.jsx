@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router';
 import { profiles } from '../../MockData/profile';
+import './Pages.css'
 
 
 function ProfilePage() {
