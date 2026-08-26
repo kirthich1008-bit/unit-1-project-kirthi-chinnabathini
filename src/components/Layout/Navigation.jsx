@@ -1,3 +1,4 @@
+import './Layout.css';
 import { Link } from 'react-router';
 
 const Navigation = () => {
