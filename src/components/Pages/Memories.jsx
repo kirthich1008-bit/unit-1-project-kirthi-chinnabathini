@@ -1,26 +1,23 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router';
+import { useLocation } from 'react-router';
+import Button from '../ReusableComponents/Buttons'
+import InputField from '../ReusableComponents/Forms';
 import './Pages.css';
 
 function MemoryPage() {
-
+// When a Add Memories button is pressed under each child's profile it makes sure the correct child name is selected.
   const location = useLocation();
-  const initialChild = location.state?.childName || 'Duggu';
+  const initialChild = location.state?.childName || '';
 
   const [selectedChild, setSelectedChild] = useState(initialChild);
   const [title, setTitle] = useState('');
   const [date, setDate] = useState('');
   const [description, setDescription] = useState('');
   const [photo, setPhoto] = useState("");
+  // For alerting message to the user that all data should be filled to proceed further to save data.
+  const [modalConfig, setModalConfig] = useState({ isOpen: false, message: "" });  
 
 
-  
-  const handleChildChange = (childName) => {
-    setSelectedChild(childName);
-  };
-
-
-  
   const handlePhotoChange = (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -45,12 +42,14 @@ function MemoryPage() {
 
   const addMemory = (e) => {
     e.preventDefault();
+   
+    // Alerting modal message.
     if (!selectedChild) {
-      alert('Please select a child first!');
+     setModalConfig({ isOpen: true, message: "Please select a child!" }); 
       return;
     }
     if (!title || !date || !description) {
-      alert('Please fill all required fields!');
+      setModalConfig({ isOpen: true, message: "Please fill all required fields!" }); 
       return;
     }
 
@@ -88,70 +87,55 @@ function MemoryPage() {
      <div className='memories-data'>
 
       
-      <h1>Memories</h1>
+      <h1>Memories:</h1>
         
-        <label>Select:</label>
-
-        <button
-          className={selectedChild === 'Duggu' ? 'active' : ''}
-          onClick={() => handleChildChange('Duggu')} >
-          Duggu
-        </button>
-       
-        <button
-          className={selectedChild === 'Mikku' ? 'active' : ''}
-          onClick={() => handleChildChange('Mikku')}>
-          Mikku
-        </button>
+      <label>Select:</label>
+     
+      {/* re-usable component button is used here */}
+      <Button className={selectedChild === 'Duggu' ? 'active' : ''} onClick={() => setSelectedChild('Duggu')}>
+        Duggu
+      </Button>
+      <Button className={selectedChild === 'Mikku' ? 'active' : ''} onClick={() => setSelectedChild('Mikku')}>
+        Mikku
+      </Button>
+        
         <br/><br/>
      
       
-     
       <form onSubmit={addMemory} >
+       
         <div className="memories-form">
 
-           <div>
-         
-          <label>Title:</label>
-          <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
-        
-        </div>
-
-        <br/><br/>
-
-        <div>
-         
-          <label>Date:</label>
-          <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
-        
-        </div>
-
-        <br/><br/>
-
-        <div>
-         
-          <label>Description:</label>
-          <textarea value={description} onChange={(e) => setDescription(e.target.value)} rows="4" maxLength="200"/>
-        
-        </div>
-
-        <br/><br/>
-
-        <div>
+          {/* re-usable forms component is used here. */}
+           <InputField label="Title:" value={title} onChange={(e) => setTitle(e.target.value)} />
+           
+            <br/><br/>
           
-          <label>Upload Photo:</label>
-          <input type="file" accept="image/*" onChange={handlePhotoChange} />
+          <InputField label="Date:" type="date" value={date} onChange={(e) => setDate(e.target.value)} />
           
-          {photo && (
-            <div>
-              <p>Preview:</p>
-              <img src={photo} alt="Preview" style={{ maxWidth: '100px', maxHeight: '100px'}} />
-            </div>
-          )}
-       
-        </div>
+           <br/><br/>
+         
+          <InputField
+            label="Description:"
+            type="textarea"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            rows="4"
+            maxLength="200"
+          />
+          
+          <br/><br/>
 
-        <br/><br/>
+          <div>
+            <InputField label="Upload Photo:" type="file" onChange={handlePhotoChange} />
+            {photo && (
+              <div>
+                <p>Preview:</p>
+                <img src={photo} alt="Preview" style={{ maxWidth: '100px', maxHeight: '100px' }} />
+              </div>
+            )}
+          </div>
+           <br/><br/>
 
         <button type="submit" >Save Memory</button>
       
@@ -160,9 +144,19 @@ function MemoryPage() {
       </form>
       
       <br/><br/>
-
       
-     
+      {/*Alert Message Boolean condition. */}
+      {modalConfig.isOpen && (         
+        <div className="modal">           
+          <p>{modalConfig.message}</p>           
+          <button onClick={() => setModalConfig({ isOpen: false, message: "" })}>OK</button>         
+        </div> 
+        )} 
+
+       <br/><br/>
+
+
+      {/* All saved Memories data will be displayed in this sequence */}
       <h2>Memories of {selectedChild}.</h2>
       
       {(!memories[selectedChild] || memories[selectedChild].length === 0) ? (
@@ -184,9 +178,9 @@ function MemoryPage() {
               <p>{memory.description}</p><br/><br/>
               
              
-              <Link to="/memories">
-              <button onClick={() => deleteMemory(memory.id)}>Delete Memory</button>
-              </Link>
+              
+            <button onClick={() => deleteMemory(memory.id)}>Delete Memory</button>
+              
               
             </div>
          ))}
