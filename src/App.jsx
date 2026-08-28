@@ -7,11 +7,14 @@ import ProfilePage from './components/Pages/ChildrenProfile';
 import MemoryPage from './components/Pages/Memories';
 import MilestonePage from './components/Pages/Milestones';
 import GalleryPage from './components/Pages/Gallery';
+import LettersPage from './components/Pages/Letters';
 import Footer from './components/Layout/Footer';
 import './App.css';
 
+
 const App = () => {
-   
+  
+  // created this variable to use has a prop in gallery.jsx
   const [galleryData] = useState(() => {
     const parse = (key) => JSON.parse(localStorage.getItem(key)) || { Duggu: [], Mikku: [] };
     const milestones = parse('childrenMilestones');
@@ -45,7 +48,11 @@ const App = () => {
       <Route path="/childrenprofile" element={<ProfilePage/>}/>
       <Route path="/memories" element={<MemoryPage/>}/>
       <Route path="/milestones" element={<MilestonePage/>}/>
+      
+       {/* Named variable has "data" prop to use in gallery.jsx */}
       <Route path="/gallery" element={<GalleryPage data={galleryData}/>}/>
+      <Route path="/letters" element={<LettersPage/>}/>
+
 
 
       

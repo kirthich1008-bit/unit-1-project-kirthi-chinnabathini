@@ -3,7 +3,9 @@ import { useLocation } from 'react-router';
 import './Pages.css';
 
 function GalleryPage({data}) {
-  
+ 
+  // For automatic selection of name when Gallery button is clicked in childrenProfiles Page under each child it will
+  // make sure the correct child data is displayed.
   const location = useLocation();
   const initialChild = location.state?.childName || 'All';
 
@@ -19,6 +21,7 @@ function GalleryPage({data}) {
     return child && type;
   });
 
+  // for mapping on buttons  
   const Children =['All', 'Duggu', 'Mikku'];
   const DataType =['All', 'Milestone', 'Memories'];
 
@@ -26,13 +29,15 @@ function GalleryPage({data}) {
 
   return (
     <div className="gallery-container">
-      <h1>Children Gallery</h1>
+      <h1>Children Gallery:</h1>
 
        {/* Child selection  */}
       <div>
         <span>Child: </span>
         {Children.map((child) => (
-         
+        
+        //  used inline css because i was unable to change the color of button
+        //  of correct child so i have used inline css for child button to be selected.
          <button key={child} onClick={() => setSelectedChild(child)} style={{
                      marginRight: '8px',
                      padding: '6px 12px',
@@ -52,7 +57,9 @@ function GalleryPage({data}) {
       <div>
         <span>Type: </span>
         {DataType.map((type) => (
-          
+       
+       //  used inline css because i was unable to change the color of button
+        //  of correct type(memories / milestones) so i have used inline css for type button to be selected.
           <button key={`type-btn-${type}`} onClick={() => setFilterType(type)} style={{
                         marginRight: '8px',
                         padding: '6px 12px',
