@@ -121,6 +121,7 @@ function MemoryPage() {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             rows="10"
+            columns="10"
             maxLength="500"
           />
           
