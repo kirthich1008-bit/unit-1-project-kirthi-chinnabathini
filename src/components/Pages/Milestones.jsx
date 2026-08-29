@@ -115,8 +115,8 @@ function MilestonePage() {
             type="textarea" 
             value={description} 
             onChange={(e) => setDescription(e.target.value)} 
-            rows="4" 
-            maxLength="200" 
+            rows="10" 
+            maxLength="500" 
           />
           <br/><br/>
           
@@ -125,7 +125,7 @@ function MilestonePage() {
           {photo && (
             <div>
               <p>Preview:</p>
-              <img src={photo} alt="Preview" style={{ maxWidth: '100px', maxHeight: '100px', borderRadius: '4px' }} />
+              <img src={photo} alt="Preview" style={{ maxWidth: '100px', maxHeight: '100px' }} />
             </div>
           )}
           <br/><br/>
@@ -163,7 +163,7 @@ function MilestonePage() {
             <div key={milestone.id} >
 
               {milestone.photo && (
-                <img src={milestone.photo} alt={milestone.title} style={{ maxWidth: '300px', maxHeight: '300px' }}/>
+                <img src={milestone.photo} alt={milestone.title} style={{ maxWidth: '200px', maxHeight: '200px' }}/>
               )}<br/><br/>
               <h3>{milestone.title}</h3><br/><br/>
               <h4 >{milestone.date}</h4><br/><br/>
