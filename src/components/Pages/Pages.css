@@ -20,7 +20,11 @@
   background-color: #b3afaf;   
   border-radius: 50px;    
   animation: fadeInUp 0.6s ease-out forwards;
-}   
+}  
+
+.home-container{
+  min-height: 100vh;
+}
 
 .home h1 {   
   color: #0d0e0f;   
