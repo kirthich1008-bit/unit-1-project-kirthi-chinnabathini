@@ -292,24 +292,28 @@ button[type="submit"]:hover {
   box-sizing: border-box;
 }
 
-.memories-card {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
-}
+.memories-card { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); 
+  gap: 12px; 
+} 
 
-.memories-card > div {
-  background: #fff;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  border: 1px solid #eee;
-  animation: fadeIn 0.4s ease-out; /
-}
+.memories-card > div { 
+  background: #fff; 
+  padding: 10px; 
+  border-radius: 6px; 
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1); 
+  border: 1px solid #eee; 
+  animation: fadeIn 0.4s ease-out; 
+ 
+} 
 
-.memories-card img {
-  border-radius: 4px;
-  object-fit: cover;
+.memories-card img { 
+  max-height: 140px; 
+  width: 100%; 
+  height: 100%;
+  border-radius: 4px; 
+  object-fit: cover; 
 }
 
 .card-link {
@@ -336,6 +340,7 @@ button[type="submit"]:hover {
     transform: translateY(0);
   }
 }
+
 
 /* MILESTONES */
 
@@ -416,8 +421,8 @@ button[type="submit"]:hover {
 
 .milestone-card {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
 }
 
 .milestone-card > div {
@@ -430,8 +435,11 @@ button[type="submit"]:hover {
 }
 
 .milestone-card img {
-  border-radius: 4px;
-  object-fit: cover;
+  max-height: 140px; 
+  width: 100%; 
+  height: 100%;
+  border-radius: 4px; 
+  object-fit: cover; 
 }
 
 .card-link {
@@ -466,6 +474,7 @@ button[type="submit"]:hover {
   margin: 0 auto;
   padding: 20px;
   font-family: sans-serif;
+  min-height: 100vh;
 }
 
 .child-selection, 
@@ -566,6 +575,7 @@ button[type="submit"]:hover {
   padding: 0 1rem;
   font-family: system-ui, -apple-system, sans-serif;
   color: #333;
+  min-height: 100vh;
 }
 
 .letters-data button {
