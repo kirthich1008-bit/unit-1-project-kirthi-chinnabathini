@@ -1,0 +1,650 @@
+/* HOME */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.home {   
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;   
+  max-width: 1000px;   
+  margin: 40px auto;   
+  padding: 20px;   
+  text-align: center;   
+  background-color: #b3afaf;   
+  border-radius: 50px;    
+  animation: fadeInUp 0.6s ease-out forwards;
+}   
+
+.home h1 {   
+  color: #0d0e0f;   
+  font-size: 2.5rem;   
+  margin-bottom: 5px; 
+}   
+
+.home p {   
+  color: #040405;   
+  font-size: 1.0rem;   
+  line-height: 1.0;   
+  margin: 15px 0; 
+}   
+
+img {   
+  display: block;   
+  margin: 5px auto;   
+  border-radius: 50px;   
+  max-width: 100%;   
+  height: auto;    
+  object-fit: cover; 
+}
+
+/* ABOUT */
+
+
+.about {   
+  max-width: 1000px;   
+  margin: 0 auto;   
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;   
+  color: #333333;   
+  line-height: 1.5;   
+  text-align: center;   
+  min-height: 100vh; 
+  animation: fadeInUp 1s ease-out forwards;
+}   
+
+.about h1 {   
+  font-size: 2.5rem;   
+  color: #272728;   
+  margin-bottom: 5px;  
+}   
+
+.about img {   
+  max-width: 300%;   
+  height: auto;   
+  max-height: 300px;   
+  border-radius: 100px;   
+  margin-left: auto;   
+  margin-right: auto;   
+  object-fit: cover; 
+}     
+
+.about p {   
+  font-size: 1.1rem;   
+  text-align: justify;    
+}   
+
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* CHILDREN-PROFILES */
+
+.profiles-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  background-color: #eff0f3;
+  min-height: 100vh;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+
+.profile-card {
+  background: #ffffff;
+  border-radius: 50px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  width: 340px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeInUp 0.6s ease backwards;
+}
+
+.profile-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.profile-image-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #eff2f4;
+  border-radius: 50px;
+  overflow: hidden;
+  height: 300px;
+}
+
+
+.profile-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.profile-card:hover .profile-image-wrapper img {
+  transform: scale(1.05);
+}
+
+.profile-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+  color: #131313;
+}
+
+.profile-details p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.profile-details strong {
+  color: #101010;
+}
+
+.profile-buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+}
+
+
+.profile-buttons button {
+  width: 100%;
+  padding: 10px;
+  background-color: #030c13;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.profile-buttons button:hover {
+  background-color: #66666e;
+}
+
+.profile-buttons button:active {
+  transform: scale(0.97);
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* MEMORIES */
+
+.memories-data {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  color: #333;
+  min-height: 100vh;
+}
+
+h1, h2 {
+  color: #2c3e50;
+}
+
+button {
+  background-color: #e0e0e0;
+  border: none;
+  padding: 8px 16px;
+  margin-right: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+button.active {
+  background-color: #0e0e0e;
+  color: white;
+}
+
+button:hover {
+  background-color: #bdc3c7;
+}
+
+button[type="submit"] {
+  background-color: #2ecc71;
+  color: white;
+}
+
+button[type="submit"]:hover {
+  background-color: #27ae60;
+}
+
+.memories-card button {
+  background-color: #0f0e0e;
+  color: white;
+}
+
+.memories-card button:hover {
+  background-color: #606062;
+}
+
+.memories-form {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  animation: fadeIn 0.4s ease-out;
+}
+
+.memories-form label {
+  display: inline-block;
+  width: 120px;
+  font-weight: bold;
+}
+
+.memories-form input[type="text"], 
+.memories-form input[type="date"], 
+.memories-form textarea {
+  width: calc(100% - 130px);
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.memories-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.memories-card > div {
+  background: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  border: 1px solid #eee;
+  animation: fadeIn 0.4s ease-out; /
+}
+
+.memories-card img {
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+}
+
+.memories-card > div:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  transition: all 0.2s ease-in-out;
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* MILESTONES */
+
+.milestone-data {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  color: #333;
+  min-height: 100vh;
+}
+
+h1, h2 {
+  color: #2c3e50;
+}
+
+button {
+  background-color: #e0e0e0;
+  border: none;
+  padding: 8px 16px;
+  margin-right: 8px;
+  border-radius: 2px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+button.active {
+  background-color: #090909;
+  color: rgb(242, 236, 236);
+}
+
+button:hover {
+  background-color: #606062;
+}
+
+button[type="submit"] {
+  background-color: #0b0c0c;
+  color: white;
+}
+
+button[type="submit"]:hover {
+  background-color: #606062;
+}
+
+.milestone-card button {
+  background-color: #0f0e0d;
+  color: white;
+}
+
+.milestone-card button:hover {
+  background-color: #606062;
+}
+
+.milestone-form {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  animation: fadeIn 0.4s ease-out; 
+}
+
+.milestone-form label {
+  display: inline-block;
+  width: 120px;
+  font-weight: bold;
+}
+
+.milestone-form input[type="text"], 
+.milestone-form input[type="date"], 
+.milestone-form textarea {
+  width: calc(100% - 130px);
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.milestone-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.milestone-card > div {
+  background: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  border: 1px solid #eee;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.milestone-card img {
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+}
+
+.milestone-card > div:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  transition: all 0.2s ease-in-out;
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* GALLERY */
+
+.gallery-container {   
+  max-width: 1200px;   
+  margin: 0 auto;   
+  padding: 20px;   
+  font-family: sans-serif;   
+  min-height: 100vh; 
+  animation: fadeIn 0.6s ease-out;
+}  
+
+.gallery-container h1 {   
+  margin-bottom: 20px;   
+  color: #333; 
+}   
+
+.gallery-container > div {   
+  margin-bottom: 15px; 
+}    
+
+.gallery-container button {   
+  background-color: #c7c6c6;   
+  border: 1px solid #ccc;   
+  padding: 6px 14px;   
+  margin-right: 8px;   
+  border-radius: 20px;   
+  cursor: pointer;   
+  font-size: 14px;   
+  transition: background-color 0.2s ease, transform 0.1s ease;    
+}   
+
+.gallery-container button:hover {   
+  background-color: #e0e0e0; 
+  transform: translateY(-1px);
+}  
+
+.gallery-container button:active {   
+  transform: translateY(1px);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* LETTERS */
+
+.letters-data {
+  max-width: 600px;
+  margin: 20px auto;
+  font-family: sans-serif;
+  padding: 10px;
+  animation: fadeIn 0.5s ease-out;
+  min-height: 100vh;
+   
+}
+
+button {
+  padding: 6px 12px;
+  margin: 5px;
+  cursor: pointer;
+  background: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: opacity 0.2s;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+button.active {
+  background: #0b0c0c;
+  color: #fff;
+  border-color: #0b0c0c;
+}
+
+
+.letters-form div {
+  margin: 10px 0;
+ }
+
+ .letters-form {
+  display: inline-block;
+  width: 300;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  
+ }
+ .letters-form  label {
+  display: inline-block;
+  width: 120px;
+  font-weight: bold;
+}
+
+.letters-form input[type="text"], 
+.letters-form input[type="date"], 
+.letters-form textarea {
+  width: calc(100% - 130px);
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  box-sizing: border-box;
+}
+
+
+.letter-card {
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 4px;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  /* General Layout */
+  .home, .about, .memories-data, .milestone-data, .gallery-container {
+    padding: 10px;
+    margin: 10px auto;
+  }
+
+  /* Typography */
+  .home h1, .about h1, .gallery-container h1 {
+    font-size: 2rem;
+  }
+
+  /* About Image Fix */
+  .about img {
+    max-width: 100%;
+    max-height: 200px;
+  }
+
+  /* Profiles Container */
+  .profiles-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .profile-card {
+    width: 100%;
+    max-width: 340px;
+  }
+
+  /* Forms (Memories & Milestones) */
+  .memories-form label, .milestone-form label {
+    display: block;
+    width: 100%;
+    margin-bottom: 5px;
+  }
+  .memories-form input[type="text"], 
+  .memories-form input[type="date"], 
+  .memories-form textarea,
+  .milestone-form input[type="text"], 
+  .milestone-form input[type="date"], 
+  .milestone-form textarea {
+    width: 100%;
+  }
+}
+
+/* LAPTOP / DESKTOP (Min width: 1024px) */
+@media screen and (min-width: 1024px) {
+  .home, .about {
+    padding: 40px;
+  }
+  
+  .profiles-container {
+    padding: 40px;
+  }
+}

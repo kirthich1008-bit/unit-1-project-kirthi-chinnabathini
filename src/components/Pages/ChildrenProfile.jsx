@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router';
-import { profiles } from '../../MockData/profile';
+import { profiles } from '../MockData/profile'
+import './Pages.css'
 
 
 function ProfilePage() {
+
+  // Mock data is being passed in useState.
   const [profileList, setProfileList] = useState(profiles);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -21,9 +24,15 @@ function ProfilePage() {
 
   return (
     <div className="profiles-container">
+     
+      <h1>Profiles:</h1> <br/><br/>
+     
       {profileList.map((user, index) => (
-        <div key={user.id} className="profile-card">
+       
+       <div key={user.id} className="profile-card">
           <div className="profile-image-wrapper">
+            
+            {/* makimg sure correct index of data to display correct image of a child. */}
             {index === 0 && <img src="/duggulu.jpeg" alt="family" height={300} />}
             {index === 1 && <img src="/mikkulu.jpeg" alt="home" height={300} />}
           </div>
@@ -45,14 +54,19 @@ function ProfilePage() {
 
           <div className="profile-buttons">
             
+            {/* we used state here to make sure the useLocation hook holds 
+             the right child name and display it when button is pressed.
+             if we are using useLocation we need to make sure to use state 
+             in before page near buttons */}
+           
             <Link to="/memories" state={{ childName: user.nickName }}>
-              <button>Memories</button>
+              <button>Add Memories</button>
             </Link>
             <Link to="/milestones" state={{ childName: user.nickName }}>
-              <button>Milestones</button>
+              <button>Add Milestones</button>
             </Link>
             <Link to="/gallery" state={{ childName: user.nickName }}>
-              <button>Gallery</button>
+              <button>View Gallery</button>
              </Link>
     
           </div>

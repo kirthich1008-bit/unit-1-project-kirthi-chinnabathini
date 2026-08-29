@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router';
+import { useLocation } from 'react-router';
+import Button from '../ReusableComponents/Buttons';
+import InputField from '../ReusableComponents/Forms';
+import './Pages.css';
 
 function MilestonePage() {
-  
+  // When a Add Milestone button is pressed under each child's profile it makes sure the correct child name is selected.
   const location = useLocation();
-  const initialChild = location.state?.childName || 'Duggu';
+  const initialChild = location.state?.childName || '';
 
   const [selectedChild, setSelectedChild] = useState(initialChild);
   const [title, setTitle] = useState('');
@@ -12,11 +15,11 @@ function MilestonePage() {
   const [description, setDescription] = useState('');
   const [photo, setPhoto] = useState("");
 
-const handleChildChange = (childName) => {
-    setSelectedChild(childName);
-  };
+  // For alerting message to the user that all data should be filled to proceed further to save data.
+  const [modalConfig, setModalConfig] = useState({ isOpen: false, message: "" });  
+  
 
-  const handlePhotoChange = (e) => {
+ const handlePhotoChange = (e) => {
     const file = e.target.files[0];
     if (!file) return;
 
@@ -39,11 +42,12 @@ const handleChildChange = (childName) => {
   const addMilestone = (e) => {
     e.preventDefault();
     if (!selectedChild) {
-      alert('Please select a child first!');
+      // alerting message.
+     setModalConfig({ isOpen: true, message: "Please select a child!" }); 
       return;
     }
     if (!title || !date || !description) {
-      alert('Please fill all required fields!');
+      setModalConfig({ isOpen: true, message: "Please fill all required fields!" });  
       return;
     }
 
@@ -81,58 +85,42 @@ const handleChildChange = (childName) => {
     <div className='milestone-data'>
 
       
-      <h1>Milestones</h1>
+      <h1>Milestones:</h1>
         
         <label>Select:</label>
-
-        <button
-          className={selectedChild === 'Duggu' ? 'active' : ''}
-          onClick={() => handleChildChange('Duggu')} >
-          Duggu
-        </button>
+      
+      {/* re-usable component button is used here */}
+        <Button className={selectedChild === 'Duggu' ? 'active' : ''} onClick={() => setSelectedChild('Duggu')}>
+        Duggu
+      </Button>
+      <Button className={selectedChild === 'Mikku' ? 'active' : ''} onClick={() => setSelectedChild('Mikku')}>
+        Mikku
+      </Button>
+        
+        <br/><br/>
        
-        <button
-          className={selectedChild === 'Mikku' ? 'active' : ''}
-          onClick={() => handleChildChange('Mikku')}>
-          Mikku
-        </button>
-        <br/><br/>
      
-     
-      <form onSubmit={addMilestone} >
-        <div className="milestione-form">
+        <form onSubmit={addMilestone} >
+        <div className="milestone-form">
 
-           <div>
-         
-          <label>Title:</label>
-          <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
-        
-        </div>
-
-        <br/><br/>
-
-        <div>
-         
-          <label>Date:</label>
-          <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
-        
-        </div>
-
-        <br/><br/>
-
-        <div>
-         
-          <label>Description:</label>
-          <textarea value={description} onChange={(e) => setDescription(e.target.value)} rows="4" maxLength="200"/>
-        
-        </div>
-
-        <br/><br/>
-
-        <div>
+          {/* re-usable forms component is used here. */}
+          <InputField label="Title:" type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+          <br/><br/>
           
-          <label>Upload Photo:</label>
-          <input type="file" accept="image/*" onChange={handlePhotoChange} />
+          <InputField label="Date:" type="date" value={date} onChange={(e) => setDate(e.target.value)} />
+          <br/><br/>
+          
+          <InputField 
+            label="Description:" 
+            type="textarea" 
+            value={description} 
+            onChange={(e) => setDescription(e.target.value)} 
+            rows="4" 
+            maxLength="200" 
+          />
+          <br/><br/>
+          
+          <InputField label="Upload Photo:" type="file" accept="image/*" onChange={handlePhotoChange} />
           
           {photo && (
             <div>
@@ -140,10 +128,7 @@ const handleChildChange = (childName) => {
               <img src={photo} alt="Preview" style={{ maxWidth: '100px', maxHeight: '100px', borderRadius: '4px' }} />
             </div>
           )}
-       
-        </div>
-
-        <br/><br/>
+          <br/><br/>
 
         <button type="submit" >Save Milestone</button>
       
@@ -152,9 +137,20 @@ const handleChildChange = (childName) => {
       </form>
       
       <br/><br/>
+       
+       {/*Alert Message Boolean condition. */}
+       {modalConfig.isOpen && (         
+        <div className="modal">           
+          <p>{modalConfig.message}</p>           
+          <button onClick={() => setModalConfig({ isOpen: false, message: "" })}> OK </button>         
+        </div> 
+        )} 
+
+         <br/><br/>
 
       
-
+      {/* All saved Milestones data will be displayed in this sequence */}
+      
       <h2>Milestones of {selectedChild}.</h2>
       
       {(!milestone[selectedChild] || milestone[selectedChild].length === 0) ? (
@@ -173,11 +169,8 @@ const handleChildChange = (childName) => {
               <h4 >{milestone.date}</h4><br/><br/>
               <p>{milestone.description}</p><br/><br/>
               
-             
-             
-              <Link to="/milestones">
               <button onClick={() => deleteMilestone(milestone.id)}>Delete Milestone</button>
-              </Link>
+              
               
             </div>
          ))}
@@ -191,10 +184,6 @@ const handleChildChange = (childName) => {
 
   );
 
-
-
-
-
-
 };
+
 export default MilestonePage;

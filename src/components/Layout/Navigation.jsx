@@ -1,3 +1,4 @@
+import './Layout.css';
 import { Link } from 'react-router';
 
 const Navigation = () => {
@@ -21,6 +22,9 @@ const Navigation = () => {
                 </li>
                 <li>
                     <Link to="/gallery">Gallery</Link>
+                </li>
+                <li>
+                    <Link to="/letters">Letters</Link>
                 </li>
             </ul>
         </nav>
