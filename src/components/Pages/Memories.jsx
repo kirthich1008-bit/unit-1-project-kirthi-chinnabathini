@@ -120,8 +120,9 @@ function MemoryPage() {
             type="textarea"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            rows="4"
-            maxLength="200"
+            rows="10"
+            columns="10"
+            maxLength="500"
           />
           
           <br/><br/>
@@ -169,7 +170,7 @@ function MemoryPage() {
             <div key={memory.id} >
 
               {memory.photo && (
-                <img src={memory.photo} alt={memory.title} style={{ maxWidth: '300px', maxHeight: '300px' }}/>
+                <img src={memory.photo} alt={memory.title} style={{ maxWidth: '200px', maxHeight: '200px' }}/>
               )}
               
               <br/><br/>

@@ -124,7 +124,7 @@ function LetterPage() {
           <div>              
             
             <label>Letter: </label>              
-            <textarea value={details} onChange={(e) => setDetails(e.target.value)} rows={10} columns={10} />            
+            <textarea value={details} onChange={(e) => setDetails(e.target.value)} rows={10} columns={10} maxLength={800} />            
          
           </div>            
          
