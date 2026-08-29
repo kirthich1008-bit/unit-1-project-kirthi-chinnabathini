@@ -115,7 +115,8 @@ function MilestonePage() {
             type="textarea" 
             value={description} 
             onChange={(e) => setDescription(e.target.value)} 
-            rows="10" 
+            rows="10"
+            columns="10" 
             maxLength="500" 
           />
           <br/><br/>
