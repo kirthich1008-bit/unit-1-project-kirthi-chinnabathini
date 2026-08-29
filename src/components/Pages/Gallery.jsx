@@ -32,21 +32,15 @@ function GalleryPage({data}) {
       <h1>Children Gallery:</h1>
 
        {/* Child selection  */}
-      <div>
+      <div className='child-selection'>
         <span>Child: </span>
         {Children.map((child) => (
         
         //  used inline css because i was unable to change the color of button
         //  of correct child so i have used inline css for child button to be selected.
-         <button key={child} onClick={() => setSelectedChild(child)} style={{
-                     marginRight: '8px',
-                     padding: '6px 12px',
-                     backgroundColor: selectedChild === child ? '#0f0e0e' : '#f0f0f0',
-                     color: selectedChild === child ? '#fff' : '#000',
-                     border: '1px solid #ccc',
-                     borderRadius: '4px',
-                     cursor: 'pointer',
-                  }} >
+         <button key={child} onClick={() => setSelectedChild(child)}
+          className={`child-btn ${selectedChild === child ? 'active' : ''}`}
+>
             {child}
           </button>
         
@@ -54,21 +48,15 @@ function GalleryPage({data}) {
       </div>
 
       {/* Type Selection */}
-      <div>
+      <div className='type-selection'>
         <span>Type: </span>
         {DataType.map((type) => (
        
        //  used inline css because i was unable to change the color of button
         //  of correct type(memories / milestones) so i have used inline css for type button to be selected.
-          <button key={`type-btn-${type}`} onClick={() => setFilterType(type)} style={{
-                        marginRight: '8px',
-                        padding: '6px 12px',
-                        backgroundColor: filterType === type ? '#0f0e0e' : '#f0f0f0',
-                        color: filterType === type ? '#fff' : '#000',
-                        border: '1px solid #ccc',
-                        borderRadius: '4px',
-                        cursor: 'pointer',
-                     }} >
+          <button key={`type-btn-${type}`} onClick={() => setFilterType(type)}
+          className={`child-btn ${filterType === type ? 'active' : ''}`}  >
+         
          {type === 'All' ? 'All Types' : type }
         </button>
         
