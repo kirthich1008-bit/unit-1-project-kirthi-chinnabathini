@@ -251,12 +251,12 @@ button:hover {
 }
 
 button[type="submit"] {
-  background-color: #2ecc71;
+  background-color: #606062;
   color: white;
 }
 
 button[type="submit"]:hover {
-  background-color: #27ae60;
+  background-color: #0b0c0c;
 }
 
 .memories-card button {
@@ -305,8 +305,18 @@ button[type="submit"]:hover {
   box-shadow: 0 1px 3px rgba(0,0,0,0.1); 
   border: 1px solid #eee; 
   animation: fadeIn 0.4s ease-out; 
+  display: flex;             
+  flex-direction: column; 
  
 } 
+
+.card-link { 
+  display: flex;            
+  flex-direction: column;    
+  text-decoration: none; 
+  color: inherit; 
+  height: 100%; 
+}
 
 .memories-card img { 
   max-height: 140px; 
@@ -316,12 +326,7 @@ button[type="submit"]:hover {
   object-fit: cover; 
 }
 
-.card-link {
-  display: block;
-  text-decoration: none;
-  color: inherit;
-  height: 100%;
-}
+
 
 .memories-card > div:hover {
   transform: translateY(-2px);
@@ -425,13 +430,23 @@ button[type="submit"]:hover {
   gap: 12px;
 }
 
-.milestone-card > div {
-  background: #fff;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  border: 1px solid #eee;
+.milestone-card > div { 
+  background: #fff; 
+  padding: 15px; 
+  border-radius: 8px; 
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+  border: 1px solid #eee; 
   animation: fadeIn 0.5s ease-out;
+  display: flex;             
+  flex-direction: column;  
+}
+
+.card-link { 
+  display: flex;            
+  flex-direction: column;    
+  text-decoration: none; 
+  color: inherit; 
+  height: 100%; 
 }
 
 .milestone-card img {
@@ -440,13 +455,6 @@ button[type="submit"]:hover {
   height: 100%;
   border-radius: 4px; 
   object-fit: cover; 
-}
-
-.card-link {
-  display: block;
-  text-decoration: none;
-  color: inherit;
-  height: 100%;
 }
 
 .milestone-card > div:hover {
