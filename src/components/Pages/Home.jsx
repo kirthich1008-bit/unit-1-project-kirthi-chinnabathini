@@ -2,7 +2,7 @@
 const HomePage = () => {
 
     return(
-        <> 
+        <main className="home-container"> 
         <div className="home">
             <h1>Welcome!</h1>
             <p>
@@ -15,7 +15,7 @@ const HomePage = () => {
 
         <img src="family.jpeg" alt="family picture" height={300}/>
         
-        </>
+        </main>
     );
 };
 
