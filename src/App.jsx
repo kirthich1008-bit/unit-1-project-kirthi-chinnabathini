@@ -31,7 +31,7 @@ const App = () => {
     };
 
     mergeData(milestones, 'Milestone');
-    mergeData(memories, 'Memory');
+    mergeData(memories, 'Memories');
 
     return combined.sort((a, b) => new Date(b.date) - new Date(a.date));
   });

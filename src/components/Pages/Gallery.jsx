@@ -48,7 +48,7 @@ function GalleryPage({data}) {
       </div>
 
       {/* Type Selection */}
-      <div className='type-selection'>
+      <div className="type-selection">
         <span>Type: </span>
         {DataType.map((type) => (
        
@@ -71,9 +71,9 @@ function GalleryPage({data}) {
         <div className="gallery-grid">
           {filteredData.map((data) => (
             <div key={`${data.type}-${data.id}`} className="gallery-card">
-              <div>
-                <strong>{data.childName}</strong> | <span>{data.type}</span>
-              </div>
+              
+              <strong>{data.childName}</strong> | <span>{data.type}</span>
+              
               {data.photo && <img src={data.photo} alt={data.title} />}
               <h3>{data.title}</h3>
               <h4>{data.date}</h4>
