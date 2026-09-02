@@ -33,8 +33,8 @@ function ProfilePage() {
           <div className="profile-image-wrapper">
             
             {/* makimg sure correct index of data to display correct image of a child. */}
-            {index === 0 && <img src="/duggulu.jpeg" alt="family" height={300} />}
-            {index === 1 && <img src="/mikkulu.jpeg" alt="home" height={300} />}
+            {index === 0 && <img src={`${import.meta.env.BASE_URL}duggulu.jpeg`} alt="family" height={300} />}
+            {index === 1 && <img src={`${import.meta.env.BASE_URL}mikkulu.jpeg`} alt="home" height={300} />}
           </div>
 
           <div className="profile-details">
