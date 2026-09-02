@@ -170,7 +170,7 @@ function MemoryPage() {
             <div key={memory.id} >
 
               {memory.photo && (
-                <img src={memory.photo} alt={memory.title} style={{ maxWidth: '200px', maxHeight: '200px' }}/>
+                <img src={memory.photo} alt={memory.title} style={{ maxWidth: '200px', maxHeight: '200px', objectFit: "cover" }}/>
               )}
               
               <br/><br/>
