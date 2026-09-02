@@ -9,7 +9,7 @@ export const profiles = [
         nickName: "Duggu",
         dob: "01/23/2023",
         state: "Houston",
-        time: "3:01pm",
+        time: "3:39pm",
         place: "Woodlands",
         Hospital: "Memorial Herman",
         deliveredDoctor: "DR.Steven Strong",
