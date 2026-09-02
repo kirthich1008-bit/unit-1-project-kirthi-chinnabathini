@@ -9,7 +9,7 @@ const AboutPage =() => {
             
             <br></br>
             
-            <img src="/about.jpeg" alt="family picture" height="300"/>
+            <img src={`${import.meta.env.BASE_URL}about.jpeg`} alt="family picture" height="300"/>
             
             <br></br>
            
